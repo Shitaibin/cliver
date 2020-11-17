@@ -8,16 +8,15 @@ import (
 )
 
 var (
-	Version    string
-	GitVersion string
-	GitCommit  string
-	BuildDate  string
-	GoVersion  = runtime.Version()
-	Platform   = runtime.GOOS + "/" + runtime.GOARCH
+	Version   string
+	GitCommit string // GIT_COMMIT=$(git rev-list -1 HEAD)
+	BuildDate string // BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+	GoVersion = runtime.Version()
+	Platform  = runtime.GOOS + "/" + runtime.GOARCH
 )
 
 func Get() string {
-	return fmt.Sprintf("{Version: %s, GitVersion: %s, GitCommit: %s, "+
-		"BuildDate: %s, GoVersion: %s, Platform: %s}", Version, GitVersion,
+	return fmt.Sprintf("{Version: %s, GitCommit: %s, "+
+		"BuildDate: %s, GoVersion: %s, Platform: %s}", Version,
 		GitCommit, BuildDate, GoVersion, Platform)
 }
